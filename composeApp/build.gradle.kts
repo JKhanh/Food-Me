@@ -4,7 +4,6 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
-    alias(libs.plugins.sqldelight)
 }
 
 kotlin {
@@ -33,18 +32,18 @@ kotlin {
             implementation(libs.compose.ui)
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
-            implementation(libs.sqldelight.android.driver)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material)
+            implementation(compose.materialIconsExtended)
             @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.components.resources)
-            implementation(libs.sqldelight.runtime)
+            implementation(libs.voyager.navigator)
+            implementation(libs.voyager.transitions)
         }
         iosMain.dependencies {
-            implementation(libs.sqldelight.native.driver)
         }
     }
 }
